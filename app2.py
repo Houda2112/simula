@@ -24,9 +24,9 @@ def prediction(input_data):
     prediction_values = loaded_model.predict(input_data_reshaped)
 
     # Display the individual predictions with labels
-    st.write("Predicted Weight:", prediction_values[0])
-    st.write("Predicted Volume:", prediction_values[1])
-    st.write("Predicted Price:", prediction_values[2])
+    st.write("Predicted Weight:", prediction_values[0][0])
+    st.write("Predicted Volume:", prediction_values[0][1])
+    st.write("Predicted Price:", prediction_values[0][2])
 
     return prediction_values
 
@@ -96,14 +96,14 @@ def main():
         if prediction_values is not None:
             st.success("Prediction Successful!")
             
-            # Define labels for each prediction
-            labels = ['Predicted Weight', 'Predicted Volume', 'Predicted Price']
+        #     # Define labels for each prediction
+        #     labels = ['Predicted Weight', 'Predicted Volume', 'Predicted Price']
             
-            # Display predictions with labels
-            for label, value in zip(labels, prediction_values):
-                st.write(f"{label}: {value}")
-        else:
-            st.error("Error during prediction.")
+        #     # Display predictions with labels
+        #     for label, value in zip(labels, prediction_values):
+        #         st.write(f"{label}: {value}")
+        # else:
+        #     st.error("Error during prediction.")
         
    # st.success(diagnosis)
     
