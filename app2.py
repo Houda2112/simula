@@ -57,12 +57,12 @@ def main():
 
     ArrivalDate = f"{arrival_day}-{arrival_month}-{arrival_year}"
 
-    # Afficher les données
-    st.write("Departure:", Departure)
-    st.write("Arrival:", Arrival)
-    st.write("TruckType:", TruckType)
-    st.write("Departure Date:", DepartureDate)
-    st.write("Arrival Date:", ArrivalDate)
+    # # Afficher les données
+    # st.write("Departure:", Departure)
+    # st.write("Arrival:", Arrival)
+    # st.write("TruckType:", TruckType)
+    # st.write("Departure Date:", DepartureDate)
+    # st.write("Arrival Date:", ArrivalDate)
     
     
     
