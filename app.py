@@ -70,22 +70,22 @@ y_pred = xgb_model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 st.write(f'Mean Squared Error on Test Data: {mse}')
 
-!pip install pyngrok
+# !pip install pyngrok
 
-!nohup streamlit run your_app.py &
+# !nohup streamlit run your_app.py &
 
-from pyngrok import ngrok
+# from pyngrok import ngrok
 
-# Set the authtoken
-ngrok.set_auth_token('2b3fo39429SNdfOTGxaIJykzJi3_6M5Gzit4ZF15vyuVsRkLe')
+# # Set the authtoken
+# ngrok.set_auth_token('2b3fo39429SNdfOTGxaIJykzJi3_6M5Gzit4ZF15vyuVsRkLe')
 
-# Create ngrok tunnel
-public_url = ngrok.connect(8501)
+# # Create ngrok tunnel
+# public_url = ngrok.connect(8501)
 
-# Display the link to access the app
-print('Streamlit app is live at:', public_url)
+# # Display the link to access the app
+# print('Streamlit app is live at:', public_url)
 
-!streamlit run /usr/local/lib/python3.10/dist-packages/colab_kernel_launcher.py
+#!streamlit run /usr/local/lib/python3.10/dist-packages/colab_kernel_launcher.py
 
 # Enregistrez le modèle après l'entraînement
 joblib.dump(xgb_model, 'modele.pkl')
