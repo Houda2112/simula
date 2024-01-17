@@ -24,11 +24,10 @@ def prediction(input_data):
     prediction_values = loaded_model.predict(input_data_reshaped)
 
     # Display the entire prediction record with labels
-    st.write("Predicted Weight:", prediction_values[0])
-    st.write("Predicted Volume:", prediction_values[1])
-    st.write("Predicted Price:", prediction_values[2])
+    st.write("Predicted Weight:", prediction_values[0], "Predicted Volume:", prediction_values[1], "Predicted Price:", prediction_values[2])
 
     return prediction_values
+
     
 # Correspondance entre les noms de ville et les codes
 city_mapping = {'Berrechid': 0, 'Casablanca': 1, 'El jadida': 2, 'Fes': 3, 'Kenitra': 4, 'Meknes': 5, 'Rabat': 6, 'Tanger': 7}
