@@ -11,15 +11,17 @@ loaded_model = pickle.load(open("model_xgb.sav", 'rb'))
 # creating a function for Prediction
 
 def prediction(input_data):
-    # Assurez-vous que votre input_data est une liste ou un tableau NumPy avec les trois features
-    input_data_as_numpy_array = np.asarray(input_data)
+    # Convert input_data to a numpy array
+    input_data_as_numpy_array = np.asarray(input_data, dtype=np.float32)
 
-    # Reshape le tableau si nécessaire
+    # Reshape the array as we are predicting for one instance
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
-    # Make the prediction
-    prediction_values = loaded_model.predict(xgb.DMatrix(input_data_reshaped))
+    # Print the data type of input_data_reshaped for debugging
+    print("Data Type of input_data_reshaped:", input_data_reshaped.dtype)
 
+    # Make the prediction
+    prediction_values = loaded_model.predict(input_data_reshaped)
     # Display the predicted values
     st.write("Predicted Weight:", prediction_values[0])
     st.write("Predicted Volume:", prediction_values[1])
