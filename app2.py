@@ -88,13 +88,20 @@ def main():
     # creating a button for Prediction
     
     if st.button('Return Scenario'):
-        diagnosis = prediction([ TruckType, departure_code, arrival_code, departure_year, departure_month, departure_day ,departure_hour, arrival_year,  arrival_month,  arrival_day, arrival_hour])
-        # Define labels for each prediction
-        labels = ['Predicted Weight', 'Predicted Volume', 'Predicted Price']
+        input_data = [TruckType, departure_code, arrival_code, departure_year, departure_month, departure_day, departure_hour, arrival_year, arrival_month, arrival_day, arrival_hour]
+        prediction_values = prediction(input_data)
+
+        if prediction_values is not None:
+            st.success("Prediction Successful!")
+            
+            # Define labels for each prediction
+            labels = ['Predicted Weight', 'Predicted Volume', 'Predicted Price']
             
             # Display predictions with labels
-        for label, value in zip(labels, prediction_values):
+            for label, value in zip(labels, prediction_values):
                 st.write(f"{label}: {value}")
+        else:
+            st.error("Error during prediction.")
         
    # st.success(diagnosis)
     
