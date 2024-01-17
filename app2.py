@@ -25,7 +25,10 @@ def prediction(input_data):
 
     return prediction
   
-    
+# Correspondance entre les noms de ville et les codes
+city_mapping = {'Berrechid': 0, 'Casablanca': 1, 'El jadida': 2, 'Fes': 3, 'Kenitra': 4, 'Meknes': 5, 'Rabat': 6, 'Tanger': 7}
+# Inversion du dictionnaire pour obtenir la correspondance inverse
+reverse_city_mapping = {v: k for k, v in city_mapping.items()}
   
 def main():
     
@@ -37,8 +40,9 @@ def main():
     # getting the input data from the user
     
     
-    Departure = st.text_input('Departure')
-    Arrival = st.text_input('Arrival')
+    # Obtenir les données d'entrée de l'utilisateur
+    Departure = st.selectbox('Departure', list(city_mapping.keys()))
+    Arrival = st.selectbox('Arrival', list(city_mapping.keys()))
     TruckType = st.text_input('TruckType')
     
    # Champs de date de départ
@@ -65,7 +69,9 @@ def main():
     st.write("Arrival Date:", ArrivalDate)
     
     
-    
+    # Convertir les noms de ville sélectionnés en codes pour l'utilisation du modèle
+    departure_code = city_mapping[Departure]
+    arrival_code = city_mapping[Arrival]
 
     
     # code for Prediction
@@ -74,7 +80,7 @@ def main():
     # creating a button for Prediction
     
     if st.button('Return Scenario'):
-        diagnosis = prediction([origine, destination, arrivaltime, departuretime, trucktype ])
+        diagnosis = prediction([ departure_code, arrival_code, TruckType, DepartureDate, ArrivalDate ])
         
         
     st.success(diagnosis)
