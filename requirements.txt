@@ -5,4 +5,5 @@ streamlit-option-menu==0.3.2
 scikit-learn==1.0.1
 joblib==1.0.1
 pandas==1.3.3  # Add other dependencies if needed
-xgboost==1.5.0  # Add the correct version
+xgboost==2.0.3  # Add the correct version
+cloudpickle==2.2.1
