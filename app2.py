@@ -23,8 +23,10 @@ def prediction(input_data):
     # Make the prediction
     prediction_values = loaded_model.predict(input_data_reshaped)
 
-    # Display the entire prediction record
-    st.write("Prediction:", prediction_values)
+    # Display the individual predictions with labels
+    st.write("Predicted Weight:", prediction_values[0])
+    st.write("Predicted Volume:", prediction_values[1])
+    st.write("Predicted Price:", prediction_values[2])
 
     return prediction_values
   
