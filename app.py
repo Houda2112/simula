@@ -8,6 +8,7 @@ Original file is located at
 """
 
 #pip install streamlit
+!pip install joblib
 
 import streamlit as st
 import joblib
