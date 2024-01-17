@@ -88,7 +88,7 @@ def main():
     # creating a button for Prediction
     
     if st.button('Return Scenario'):
-        diagnosis = prediction([ departure_code, arrival_code, departure_year, departure_month, departure_day ,departure_hour,  arrival_day, arrival_month, arrival_year,  arrival_month,  arrival_day, arrival_hour])
+        diagnosis = prediction([ TruckType, departure_code, arrival_code, departure_year, departure_month, departure_day ,departure_hour, arrival_year,  arrival_month,  arrival_day, arrival_hour])
         
         
     st.success(diagnosis)
