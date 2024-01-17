@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 import streamlit as st
+import xgboost as xgb
 
 
 # loading the saved model
@@ -9,20 +10,20 @@ loaded_model = pickle.load(open("model.sav", 'rb'))
 
 # creating a function for Prediction
 
-def diabetes_prediction(input_data):
-    
-
-    # changing the input_data to numpy array
+def prediction(input_data):
+    # Assurez-vous que votre input_data est une liste ou un tableau NumPy avec les trois features
     input_data_as_numpy_array = np.asarray(input_data)
 
-    # reshape the array as we are predicting for one instance
-    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+    # Reshape le tableau si nécessaire
+    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
-    prediction = loaded_model.predict(input_data_reshaped)
-    print(prediction)
+    # Faire la prédiction
+    prediction = loaded_model.predict(xgb.DMatrix(input_data_reshaped))
 
-    if (prediction[0] == 0):
-      return model
+    # Afficher la prédiction (remplacez cela par la logique spécifique à votre application)
+    print("Prédiction (poids, volume, prix) :", prediction)
+
+    return prediction
   
     
   
@@ -30,18 +31,38 @@ def main():
     
     
     # giving a title
-    st.title(' Prediction Web Application')
+    st.title(' Return Scenario')
     
     
     # getting the input data from the user
     
     
-    origine = st.text_input('origine')
-    destination = st.text_input('destination')
-    arrivaltime = st.text_input('arrivaltime')
-    departuretime = st.text_input('departuretime')
-    trucktype = st.text_input('trucktype')
+    Departure = st.text_input('Departure')
+    Arrival = st.text_input('Arrival')
+    TruckType = st.text_input('TruckType')
     
+    # Champs de date de départ
+    st.write("Departure Date:")
+    departure_day = st.selectbox("Day", list(range(1, 32)))
+    departure_month = st.selectbox("Month", list(range(1, 13)))
+    departure_year = st.selectbox("Year", list(range(2015, 2030)))
+
+    DepartureDate = f"{departure_day}-{departure_month}-{departure_year}"
+
+    # Champs de date d'arrivée
+    st.write("Arrival Date:")
+    arrival_day = st.selectbox("Day", list(range(1, 32)))
+    arrival_month = st.selectbox("Month", list(range(1, 13)))
+    arrival_year = st.selectbox("Year", list(range(2015, 2030)))
+
+    ArrivalDate = f"{arrival_day}-{arrival_month}-{arrival_year}"
+
+    # Afficher les données
+    st.write("Departure:", Departure)
+    st.write("Arrival:", Arrival)
+    st.write("TruckType:", TruckType)
+    st.write("Departure Date:", DepartureDate)
+    st.write("Arrival Date:", ArrivalDate)
     
     
     
@@ -52,8 +73,8 @@ def main():
     
     # creating a button for Prediction
     
-    if st.button('Diabetes Test Result'):
-        diagnosis = diabetes_prediction([origine, destination, arrivaltime, departuretime, trucktype ])
+    if st.button('Return Scenario'):
+        diagnosis = prediction([origine, destination, arrivaltime, departuretime, trucktype ])
         
         
     st.success(diagnosis)
