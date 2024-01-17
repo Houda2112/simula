@@ -89,9 +89,14 @@ def main():
     
     if st.button('Return Scenario'):
         diagnosis = prediction([ TruckType, departure_code, arrival_code, departure_year, departure_month, departure_day ,departure_hour, arrival_year,  arrival_month,  arrival_day, arrival_hour])
+        # Define labels for each prediction
+        labels = ['Predicted Weight', 'Predicted Volume', 'Predicted Price']
+            
+            # Display predictions with labels
+        for label, value in zip(labels, prediction_values):
+                st.write(f"{label}: {value}")
         
-        
-    st.success(diagnosis)
+   # st.success(diagnosis)
     
     
     
