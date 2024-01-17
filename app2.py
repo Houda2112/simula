@@ -41,28 +41,28 @@ def main():
     Arrival = st.text_input('Arrival')
     TruckType = st.text_input('TruckType')
     
-    # Champs de date de départ
+   # Champs de date de départ
     st.write("Departure Date:")
-    departure_day = st.selectbox("Day", list(range(1, 32)))
-    departure_month = st.selectbox("Month", list(range(1, 13)))
-    departure_year = st.selectbox("Year", list(range(2015, 2030)))
+    departure_day = st.selectbox("Departure Day", list(range(1, 32)))
+    departure_month = st.selectbox("Departure Month", list(range(1, 13)))
+    departure_year = st.selectbox("Departure Year", list(range(2022, 2030)))
 
     DepartureDate = f"{departure_day}-{departure_month}-{departure_year}"
 
     # Champs de date d'arrivée
     st.write("Arrival Date:")
-    arrival_day = st.selectbox("Day", list(range(1, 32)))
-    arrival_month = st.selectbox("Month", list(range(1, 13)))
-    arrival_year = st.selectbox("Year", list(range(2015, 2030)))
+    arrival_day = st.selectbox("Arrival Day", list(range(1, 32)))
+    arrival_month = st.selectbox("Arrival Month", list(range(1, 13)))
+    arrival_year = st.selectbox("Arrival Year", list(range(2022, 2030)))
 
     ArrivalDate = f"{arrival_day}-{arrival_month}-{arrival_year}"
 
-    # # Afficher les données
-    # st.write("Departure:", Departure)
-    # st.write("Arrival:", Arrival)
-    # st.write("TruckType:", TruckType)
-    # st.write("Departure Date:", DepartureDate)
-    # st.write("Arrival Date:", ArrivalDate)
+    # Afficher les données
+    st.write("Departure:", Departure)
+    st.write("Arrival:", Arrival)
+    st.write("TruckType:", TruckType)
+    st.write("Departure Date:", DepartureDate)
+    st.write("Arrival Date:", ArrivalDate)
     
     
     
